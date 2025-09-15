@@ -24,7 +24,7 @@ Con esto en mente, resta aclarar que para cargar o importar los datos desde un a
 ```
 la coma al inicio nos dice que irá un id autoincremental en ese lugar. Además mirando esto, llegue a extraer la siguiente información 
 
-![captura de la terminal.](assets/scTabla.png")
+![captura de la terminal.](assets/scTabla.png)
 
 ## Crear la BD `ejercicio05` y la tabla `empleados`
 Ahora que disponemos de la información podemos proseguir con el DDL
