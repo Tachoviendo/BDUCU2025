@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS EmpresaRemises;
+DROP DATABASE IF EXISTS empresa_remises;
 
-CREATE DATABASE empresaremises;
+CREATE DATABASE empresa_remises;
 
-\c empresaremises;
+\c empresa_remises;
 
 CREATE TABLE PERSONA (
     cedula VARCHAR(8) PRIMARY KEY,
