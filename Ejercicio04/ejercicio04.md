@@ -171,7 +171,7 @@ en mi caso, no use una ruta absoluta porque estaba en el mismo directorio que mi
 ```Bash
 psql -U tacho -d postgres -f empresa_remises.sql
 ```
-y obtuve como resultado: 
+##### y obtuve como resultado: 
 
 ![captura de la terminal.](assets/scRemises.png)
 
@@ -180,7 +180,7 @@ y obtuve como resultado:
 ```Bash
 psql -U tacho -d postgres -f fabrica_pastas.sql
 ```
-resultado: 
+##### resultado: 
 ![captura de la terminal.](assets/scPastas.png)
 
 
