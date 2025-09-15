@@ -11,7 +11,7 @@ Fecha: 14 de septiembre de 2025
 
 # Modelo Lógico
 ## Fabrica  de pastas
-```postgreSQL
+```SQL
     DROP DATABASE IF EXISTS fabrica_pastas;
     CREATE DATABASE fabrica_pastas;
 
@@ -84,7 +84,7 @@ Fecha: 14 de septiembre de 2025
 ```
 
 ## Empresa de remises
-```postgreSQL
+```SQL
 
 DROP DATABASE IF EXISTS empresa_remises;
 
@@ -173,7 +173,7 @@ psql -U tacho -d postgres -f empresa_remises.sql
 ```
 y obtuve como resultado: 
 
-![captura de la terminal.](assets/scRemises.png")
+![captura de la terminal.]("assets/scRemises.png")
 
 #### Ejecutar fabrica_pastas.sql
 
@@ -181,7 +181,7 @@ y obtuve como resultado:
 psql -U tacho -d postgres -f fabrica_pastas.sql
 ```
 resultado: 
-![captura de la terminal.](assets/scPastas.png")
+![captura de la terminal.]("assets/scPastas.png")
 
 
 
