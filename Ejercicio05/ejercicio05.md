@@ -91,12 +91,12 @@ Cabe resaltar que `\copy` es un comando del entorno `psql`.
 ### Ejecutar el script
 Ahora que tenemos todo el scritp creado, solo resta ejecutar. 
 
-![captura de la terminal.](assets/scEjecutar.png")
+![captura de la terminal.](assets/scEjecutar.png)
 
 #### Comprobar si los datos fueron cargados
 Podemos entrar a la bd con mediante `psql` y hacer una consulta. Para esto, hay que ejecutar el siguiente comando: `psql -U nombre_usuario -d base_de_datos` y luego hacer una consulta.
 
-![captura de la terminal.](assets/scComprobar.png")
+![captura de la terminal.](assets/scComprobar.png)
 
 # Sentencias SQL
 
@@ -128,7 +128,7 @@ psql -U tacho -d ejercicio05 -f mayores40.sql
 ```
 y el resultado fue el siguiente: 
 
-![captura de la terminal.](assets/scComprobarC1.png")
+![captura de la terminal.](assets/scComprobarC1.png)
 
 ## Listado de empleados menores a 40 años y solterios
 Usaré la misma estructura pero ahora acompañado de un  `AND` para filtrar por las dos condiciones. 
@@ -149,7 +149,7 @@ psql -U tacho -d ejercicio05 -f menores40.sql
 ```
 y el resultado fue el siguiente: 
 
-![captura de la terminal.](assets/scComprobarC2.png")
+![captura de la terminal.](assets/scComprobarC2.png)
 
 ## Cantidad de empleados por departamento
 En esta consulta, nos conviene dejar de lado el `WHERE` y usar `GRUOP BY` para agrupar a los empleados en función de su departamento. Además, debemos usar `COUNT(*)` para saber cuantos hay de cada grupo de la siguiente manera: 
@@ -169,7 +169,7 @@ psql -U tacho -d ejercicio05 -f cantidadEmpeadosDepto.sql
 ```
 y el resultado fue el siguiente: 
 
-![captura de la terminal.](assets/scComprobarC3.png")
+![captura de la terminal.](assets/scComprobarC3.png)
 
 ## Cantidad de empleados por departamento y sexo
 Es casi identica  a la anterior, solo que ahora debemos agrupar en función del departamento y el genero.
@@ -190,7 +190,7 @@ psql -U tacho -d ejercicio05 -f cantidadEmpeadosDeptoGender.sql
 ```
 y el resultado fue el siguiente: 
 
-![captura de la terminal.](assets/scComprobarC4.png")
+![captura de la terminal.](assets/scComprobarC4.png)
 
 ## Promedio de edad de los empleados según el sexo.
 
@@ -212,7 +212,7 @@ psql -U tacho -d ejercicio05 -f cantidadEmpeadosDeptoGender.sql
 ```
 y el resultado fue el siguiente: 
 
-![captura de la terminal.](assets/scComprobarC5.png")
+![captura de la terminal.](assets/scComprobarC5.png)
 
 
 
