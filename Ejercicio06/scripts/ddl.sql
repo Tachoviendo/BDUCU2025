@@ -25,14 +25,13 @@ CREATE TABLE videojuegos(
 );
 
 CREATE TABLE EXPANSIONES(
-    nombre varchar(60),
+    nombre varchar(60) PRIMARY KEY,
     nombre_videojuego varchar(60),
     costo decimal, 
-    FOREIGN KEY (nombre_videojuego) REFERENCES videojuegos(nombre),
-    PRIMARY KEY (nombre, nombre_videojuego)
+    FOREIGN KEY (nombre_videojuego) REFERENCES videojuegos(nombre)
 );
 
-CREATE TABLE AMIGOS(
+CREATE TABLE amigos(
     email_persona varchar(50),
     email_amigo varchar(50),
     FOREIGN KEY (email_persona) REFERENCES persona(email),
@@ -40,17 +39,26 @@ CREATE TABLE AMIGOS(
     PRIMARY KEY (email_persona, email_amigo)
 );
 
-CREATE TABLE COMPRA (
-    id_compra SERIAL PRIMARY KEY,
+
+CREATE TABLE compra_videojuego (
     email_persona varchar(50),
-    nombre_videojuego varchar(60),
+    nombre_videojuego varchar(60), 
+    valor decimal, 
+    fecha date, 
+    FOREIGN KEY(email_persona) REFERENCES persona(email),
+    FOREIGN KEY (nombre_videojuego) REFERENCES videojuegos(nombre),
+    PRIMARY KEY(email_persona, nombre_videojuego)
+);
+
+CREATE TABLE compra_expansiones (
+    email_persona varchar(50),
     nombre_expansion varchar(60), 
     valor decimal, 
     fecha date, 
     FOREIGN KEY(email_persona) REFERENCES persona(email),
-    FOREIGN KEY (nombre_expansion, nombre_videojuego) REFERENCES expansiones(nombre, nombre_videojuego),
-    FOREIGN KEY (nombre_videojuego) REFERENCES videojuegos(nombre)
-   );
+    FOREIGN KEY (nombre_expansion) REFERENCES expansiones(nombre),
+    PRIMARY KEY(email_persona, nombre_expansion)
+);
 
 CREATE TABLE juega(
     email_persona varchar(50),

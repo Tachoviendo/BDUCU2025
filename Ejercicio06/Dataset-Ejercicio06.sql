@@ -1,4 +1,4 @@
-\c ejercicio06
+    \c ejercicio06
 
 INSERT INTO persona(email, nombre, apellido, fecha_nacimiento) VALUES 
 ('persona1@gmail.com', 'Alejandro', 'Benítez', '2010-10-01'),
@@ -41,11 +41,13 @@ INSERT INTO videojuegos(nombre, dificultad, descripcion, costo, tipo_videojuego)
 INSERT INTO expansiones(nombre, nombre_videojuego, costo) VALUES 
 ('Battlefield 2042 Ultimate Edition', 'Battlefield 2042', 4800);
 
-INSERT INTO compra (email_persona, nombre_videojuego, nombre_expansion, valor, fecha) VALUES
-('persona1@gmail.com', 'Project Zomboid', NULL, 429, '2024-01-15'),
-('persona2@gmail.com', 'Tower of Fantasy', NULL, 0, '2024-02-10'),
-('persona3@gmail.com', 'Battlefield 2042', 'Battlefield 2042 Ultimate Edition', 7400, '2024-03-22');
+INSERT INTO compra_videojuego(email_persona, nombre_videojuego, valor, fecha) VALUES
+('persona1@gmail.com', 'Project Zomboid', 429, '2024-01-15'),
+('persona2@gmail.com', 'Tower of Fantasy', 0, '2024-02-10'),
+('persona3@gmail.com', 'Battlefield 2042', 2600, '2024-03-22');
 
+INSERT INTO compra_expansiones(email_persona, nombre_expansion, valor, fecha) VALUES
+('persona3@gmail.com', 'Battlefield 2042 Ultimate Edition', 4800, '2024-03-22');
 
 INSERT INTO juega (email_persona, nombre_videojuego, fecha) VALUES
 ('persona1@gmail.com', 'Project Zomboid', '2024-01-20'),
