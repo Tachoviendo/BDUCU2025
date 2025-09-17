@@ -229,6 +229,150 @@ y el resultado fue el siguiente
 
 ![captura de la terminal.](assets/scFernanda.png)
 
+### Magic: The Gathering Arena pasa a valer $500
+Ahora las magics ya no son un free to play :(
+```SQL
+\c ejercicio06 
+
+UPDATE videojuegos 
+SET costo = 500
+WHERE nombre = 'Magic: The Gathering Arena';
+
+SELECT * FROM videojuegos WHERE nombre = 'Magic: The Gathering Arena';
+```
+
+compruebo el resultado: 
+![captura de la terminal.](assets/scMagic.png)
+
+###  Sergio adquiere Magic: The Gathering Arena.
+Usamos la plantilla de alejandro pero con otros nombres. 
+
+```SQL
+\c ejercicio06
+
+INSERT INTO compra_videojuegos(email_persona, nombre_videojuego, valor, fecha)
+VALUES(
+    (SELECT email FROM persona WHERE nombre = 'Sergio'),
+    'Magic: The Gathering Arena',
+    (SELECT costo FROM videojuegos WHERE nombre = 'Magic: The Gathering Arena'),
+    CURRENT_DATE
+);
+
+
+SELECT * FROM compra_expansiones WHERE email_persona = (SELECT email FROM persona WHERE nombre = 'Sergio');
+```
+
+y sergio compró las magic
+
+![captura de la terminal.](assets/scSergio.png)
+
+### Gonzalo adquiere Battlefield 2042.
+vamos con otra
+
+```SQL
+
+\c ejercicio06
+
+INSERT INTO compra_videojuego(email_persona, nombre_videojuego, valor, fecha)
+VALUES(
+    (SELECT email FROM persona WHERE nombre = 'Gonzalo'),
+    'Battlefield 2042', 
+    (SELECT costo FROM videojuegos WHERE nombre = 'Battlefield 2042'),
+    CURRENT_DATE
+);
+
+
+SELECT * FROM compra_videojuego WHERE email_persona = (SELECT email FROM persona WHERE nombre = 'Gonzalo');
+
+```
+y el resultado fue
+
+![captura de la terminal.](assets/scGonzalo.png)
+
+### Battlefield 2042 disminuye su precio en $200
+
+idem que para las magic
+
+```SQL
+
+\c ejercicio06 
+
+UPDATE videojuegos 
+SET costo = 200
+WHERE nombre = 'Battlefield 2042';
+
+SELECT * FROM videojuegos WHERE nombre = 'Battlefield 2042';
+
+```
+y bajo el precio 
+
+![captura de la terminal.](assets/scB2042.png)
+
+### Gonzalo adquiere Battlefield la expansión Battlefield 2042 Ultimate Edition.
+
+Ahora si, como gonzalo tiene el battlefield, debería dejar comprar su expansión
+ 
+```SQL
+
+\c ejercicio06
+
+INSERT INTO compra_expansiones (email_persona, nombre_expansion, valor, fecha)
+VALUES(
+    (SELECT email FROM persona WHERE nombre = 'Gonzalo'),
+    'Battlefield 2042 Ultimate Edition',
+    (SELECT costo FROM expansiones WHERE nombre = 'Battlefield 2042 Ultimate Edition'),
+    CURRENT_DATE
+);
+
+
+SELECT * FROM compra_expansiones WHERE email_persona = (SELECT email FROM persona WHERE nombre = 'Gonzalo');
+
+```
+
+el chekeo no tiene valor porque había puesto un estapcio demas en el nombre cuando fuí a hace el select del costo
+
+![captura de la terminal.](assets/scGonzalo2.png)
+
+### INFLACION
+suben los precios un 10% :(
+
+```SQL
+\c ejercicio06
+
+UPDATE videojuegos 
+SET costo = costo*1.10;
+
+SELECT nombre,costo FROM videojuegos;
+
+```
+
+y el resultado fue:
+
+![captura de la terminal.](assets/scInflacion.png)
+
+## Un solo Script
+resta juntar todas estas instrucciones en un mismo scripts y probar que no haya errores al acerlo, para eso voy a dropear y cargar el dataset nuevamente para empezar "desde 0". Una vez este en este estado, voy a ejecutar `dml.sql` y como probamos todo de forma individual, no debería haber problema
+
+y el resultado fue el sigueinte: 
+
+![captura de la terminal.](assets/scFinDML.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
