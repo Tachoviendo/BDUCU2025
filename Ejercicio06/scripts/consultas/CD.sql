@@ -1,11 +1,10 @@
-\c ejercicio06
-
-SELECT fecha_nacimiento, COUNT(*)
-FROM persona    
+SELECT EXTRACT(YEAR FROM AGE(fecha_nacimiento)) AS edad, COUNT(*)
+FROM persona
 WHERE email IN (
-    SELECT email_persona 
-    FROM juega 
+    SELECT email_persona
+    FROM juega
     WHERE nombre_videojuego = 'Project Zomboid'
 )
-GROUP BY fecha_nacimiento;
+GROUP BY edad;
+
 
