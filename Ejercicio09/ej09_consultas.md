@@ -1,4 +1,3 @@
-
 # Ejercicio 09: Algebra relacional
 
 Estudiante: Silva, Ignacio 
@@ -159,27 +158,84 @@ EN `SQL` me resulto mas facil hacerlo ya que `WHERE NOT EXISTS` cumple la funci�
 COME_PERSONA ← π nombre, pizza (COME)
 
 PIZZERIAS_PERSONA ← FRECUENTA ⋈ _FRECUENTA.pizzería = MENU.pizzería
-
-
 PERSONAS_NO_CUMPLEN ← π nombre (COME_PERSONA × FRECUENTA) − π nombre (COME_PERSONA ⋈ PIZZERIAS_PERSONA)
 
-
-RESULTADO ← π_{nombre}(PERSONA) − PERSONAS_NO_CUMPLEN
+RESULTADO ← π nombre(PERSONA) − PERSONAS_NO_CUMPLEN
 
 ```
 
-Con el pares de los nombres de las persona sy la pizzeria que frecuentan, 
+Con el producto Cartesiano `COME_PERSONA × FRECUENTA`
+consigo todos pares nombre, pizzeria y luego le resto la combinación `COME_PERSONA ⋈ PIZZERIAS_PERSONA` que me da pares nombre, pizzeria donde la persona come al menos una pizza que sirven en la pizzeria. Con esa diferencia consigo las personas que no cumplen la condición para luego en el resultado hacer la diferencia entre: 
+
+`π nombre(PERSONA)` donde selecciono los nombres de las peronas con `PERSONAS_NO_CUMPLEN`, donde estan las personas que no cumplen con lo que pide la consulta.
+
+#### Consulta en SQL 
 
 
+```SQL
 
+SELECT PERSONA.nombre
+FROM PERSONA 
+WHERE NOT EXISTS (
+    SELECT *
+    FROM FRECUENTA 
+    JOIN MENU ON FRECUENTA.pizzería = MENU.pizzería
+    WHERE FRECUENTA.nombre = PERSONA.nombre
+      AND MENU.pizza NOT IN (
+          SELECT COME.pizza
+          FROM COME 
+          WHERE COME.nombre = PERSONA.nombre
+      )
+);
 
+```
+Esta consulta es similar a la del punto anterior solo que ahora quiero verificar en el `WHERE NOT EXISTS` las personas que asisten a pizzerias que no sirven platos que comen. 
 
+### 8. Personas que frecuentan todas las pizzerías que sirven al menos una de las pizzas que consumen habitualmente
 
+#### Consulta Algebra
 
+```
 
+PIZZERIAS_SIRVEN ← π nombre, pizzería(COME ⋈ _COME.pizza = MENU.pizza_ MENU)
 
+PIZZERIAS_NO_FRECUENTADAS ← PIZZERIAS_SIRVEN − FRECUENTA
 
+RESULTADO ← π nombre (PERSONA) − π nombre(PIZZERIAS_NO_FRECUENTADAS)
 
+```
+#### Consulta SQL
+```SQL
+SELECT  PERSONA.nombre
+FROM PERSONA 
+WHERE NOT EXISTS (
+    SELECT *
+    FROM MENU 
+    JOIN COME  ON MENU.pizza = COME.pizza
+    WHERE COME.nombre = PERSONA.nombre
+      AND MENU.pizzería NOT IN (
+          SELECT FRECUENTA.pizzería
+          FROM FRECUENTA 
+          WHERE FRECUENTA.nombre = PERSONA.nombre
+      )
+);
 
+```
+Use la misma lógica negativa para que `WHERE NOT EXISTS` actue como la diferencia que hago con `RESULTADO`
 
+### 
 
+#### Consulta SQL
+
+```
+SELECT pizzería
+FROM MENU
+WHERE pizza = 'pepperoni'
+  AND precio = (
+    SELECT MIN(precio)
+    FROM MENU
+    WHERE pizza = 'pepperoni'
+  );
+
+```
+Con esta consulta, selecciono la pizzería en la que el precio de la pizza con pepperoni y en caso de empate, esta consulta muestra las demas
