@@ -29,7 +29,8 @@ para eso realicé el siguiente script: [Script de creación](scripts/createColle
 
 ### Ejecutar el script
 Para comprobar su funcionamiento, ejecute el siguiente comando: `mongosh ejercicio125 < createCollections.js`
-y este fué el resultado: 
+y este fué el resultado:<br>
+
 ![captura de pantalla](assets/scShell1.png)
 
 
