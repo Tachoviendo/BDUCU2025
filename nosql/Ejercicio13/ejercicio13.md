@@ -53,6 +53,7 @@ Esta parte del ejercicio pide modificar los documents dentro de todas las colecc
 
 ### Resultados
 ![captura de pantalla](assets/scUpdate1.png)
+
 ![captura de pantalla](assets/scUpdate2.png)
 
 ## Parte 5 
@@ -62,6 +63,7 @@ Para esta parte, generé otro script:[Parte 5](scripts/parte5.js)
 1. Clientes
 
 ![captura de pantalla](assets/scP5clientesA.png)
+
 ![captura de pantalla](assets/scP5clientesB.png)
 
 
